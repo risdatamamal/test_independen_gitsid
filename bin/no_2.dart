@@ -9,23 +9,29 @@ void main() {
     stdout.write('Masukkan Email Anda (maks. 20 karakter): ');
     email = stdin.readLineSync() ?? '';
 
-    if (email != '') {
+    if(email.contains('@') == false) {
       notValid = true;
       print('Tidak menggunakan tanda @');
     }
 
-    // if() {}
+    else if(email.contains('.') == false) {
+      notValid = true;
+      print('Tidak menggunakan tanda . setelah @');
+    }
 
-    if (email.length > 20) {
+    else if (email.length > 20) {
       notValid = true;
       print('Email Anda terlalu panjang');
     }
 
-    // if(email != '.co.id'.toString() && email != '.id'.toString()) {
-    //   notValid= true;
-    //   print('Email Anda bukan .co.id dan .id');
-    // }
+    else if(email.contains('.co.id') == false && email.contains('.id') == false) {
+      notValid= true;
+      print('Email Anda bukan .co.id dan .id');
+    }
+
+    else {
+      print('Email kamu : $email');
+    }
 
   } while (notValid);
-  stdout.write('Email kamu : ${email}');
 }
